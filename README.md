@@ -1,19 +1,10 @@
-# My first package for laravel
+# Money Asaas
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/yurisouzadev/money-asaas.svg?style=flat-square)](https://packagist.org/packages/yurisouzadev/money-asaas)
-[![GitHub Tests Action Status](https://github.com/spatie/package-money-asaas-laravel/actions/workflows/run-tests.yml/badge.svg)](https://github.com/yurisouzadev/money-asaas/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://github.com/spatie/package-money-asaas-laravel/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/yurisouzadev/money-asaas/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Tests](https://github.com/YuriSouzaDev/money-asaas/actions/workflows/tests.yml/badge.svg)](https://github.com/YuriSouzaDev/money-asaas/actions/workflows/tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/yurisouzadev/money-asaas.svg?style=flat-square)](https://packagist.org/packages/yurisouzadev/money-asaas)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/money-asaas.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/money-asaas)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -76,7 +67,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [money-asaas](https://github.com/YuriSouzaDev)
+- [Yuri Souza](https://github.com/YuriSouzaDev)
 - [All Contributors](../../contributors)
 
 ## License
