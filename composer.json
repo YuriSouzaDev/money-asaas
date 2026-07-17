@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "YuriSouzaDev\\Moneyasaas\\MoneyAsaas\\": "src/",
-            "YuriSouzaDev\\Moneyasaas\\MoneyAsaas\\Database\\Factories\\": "database/factories/"
+            "Moneyasaas\\MoneyAsaas\\": "src/",
+            "Moneyasaas\\MoneyAsaas\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "YuriSouzaDev\\Moneyasaas\\MoneyAsaas\\Tests\\": "tests/",
+            "Moneyasaas\\MoneyAsaas\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
