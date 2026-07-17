@@ -3,8 +3,8 @@
 namespace Moneyasaas\MoneyAsaas\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Moneyasaas\MoneyAsaas\MoneyAsaasServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

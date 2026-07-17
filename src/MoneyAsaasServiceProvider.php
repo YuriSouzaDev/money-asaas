@@ -2,9 +2,9 @@
 
 namespace Moneyasaas\MoneyAsaas;
 
+use Moneyasaas\MoneyAsaas\Commands\MoneyAsaasCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Moneyasaas\MoneyAsaas\Commands\MoneyAsaasCommand;
 
 class MoneyAsaasServiceProvider extends PackageServiceProvider
 {
