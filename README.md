@@ -1,51 +1,75 @@
 # Money Asaas
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/yurisouzadev/money-asaas.svg?style=flat-square)](https://packagist.org/packages/yurisouzadev/money-asaas)
-[![Tests](https://github.com/YuriSouzaDev/money-asaas/actions/workflows/tests.yml/badge.svg)](https://github.com/YuriSouzaDev/money-asaas/actions/workflows/tests.yml)
+[![Tests](https://github.com/YuriSouzaDev/money-asaas/actions/workflows/tests.yml/badge.svg?branch=dev)](https://github.com/YuriSouzaDev/money-asaas/actions/workflows/tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/yurisouzadev/money-asaas.svg?style=flat-square)](https://packagist.org/packages/yurisouzadev/money-asaas)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+> **🚧 Work in Progress** — a API abaixo é o contrato de design do pacote e guia o desenvolvimento (README Driven Development). Nem tudo já está implementado. Acompanhe o progresso nas [milestones](../../milestones).
 
-## Installation
+Money Asaas é uma camada de billing para Laravel sobre o [Asaas](https://www.asaas.com), no estilo do [Laravel Cashier](https://laravel.com/docs/billing) — não um wrapper fino da API.
 
-You can install the package via composer:
+## Por que não é "mais um SDK do Asaas"?
+
+Já existem várias bibliotecas PHP que espelham a API do Asaas endpoint a endpoint (`->customer()->create()`, `->payment()->getById()`). Elas funcionam, mas deixam pra você resolver, na aplicação, tudo que envolve **billing de verdade**: sincronizar status de assinatura com o seu `User`, tratar webhooks, calcular parcelas e multa, versionar planos.
+
+O Money Asaas assume essa camada. Ele se integra ao Eloquent (trait no seu `User`/`Model` de cobrança), expõe uma API fluente para cobranças e assinaturas, e trata os webhooks do Asaas para manter o estado sincronizado automaticamente — do mesmo jeito que o Cashier faz para Stripe/Paddle.
+
+| | SDKs wrapper existentes | Money Asaas |
+|---|---|---|
+| Modelo mental | Chamada de API | Billing (assinaturas, cobranças, planos) |
+| Integração com Eloquent | Manual | Trait pronta (`Billable`) |
+| Webhooks | Você implementa | Tratados pelo pacote |
+| Parcelamento/multa/juros | Monta o payload à mão | API fluente |
+
+## Instalação
 
 ```bash
 composer require yurisouzadev/money-asaas
 ```
-
-You can publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --tag="money-asaas-migrations"
 php artisan migrate
 ```
 
-You can publish the config file with:
-
 ```bash
 php artisan vendor:publish --tag="money-asaas-config"
 ```
 
-This is the contents of the published config file:
+## Uso
+
+Adicione a trait `Billable` ao seu model de cobrança:
 
 ```php
-return [
-];
+use Moneyasaas\MoneyAsaas\Billable;
+
+class User extends Authenticatable
+{
+    use Billable;
+}
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="money-asaas-views"
-```
-
-## Usage
+### Cobrança avulsa
 
 ```php
-$moneyAsaas = new Moneyasaas\MoneyAsaas();
-echo $moneyAsaas->echoPhrase('Hello, Moneyasaas!');
+$user->charge(150.00)
+    ->billingType()->pix()
+    ->installments(3)
+    ->fine(2.0)
+    ->interest(1.0)
+    ->create();
 ```
+
+### Assinatura recorrente
+
+```php
+$user->newSubscription('plano-mensal', 'price_xxx')
+    ->billingType()->creditCard()
+    ->monthly()
+    ->create();
+```
+
+> Os exemplos acima descrevem a API alvo do v1. Consulte as [issues `feat`](../../issues?q=is%3Aissue+label%3Afeat) para o status de cada método.
 
 ## Testing
 
