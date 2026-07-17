@@ -1,6 +1,7 @@
 {
     "name": "yurisouzadev/money-asaas",
     "description": "My first package for laravel",
+    "version": "v0.1.0",
     "keywords": [
         "money-asaas",
         "laravel",
